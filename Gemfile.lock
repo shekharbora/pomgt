@@ -75,6 +75,8 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    acts-as-taggable-on (10.0.0)
+      activerecord (>= 6.1, < 7.2)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     autoprefixer-rails (10.4.16.0)
@@ -119,6 +121,9 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (2.0.1)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -140,6 +145,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
     msgpack (1.7.2)
@@ -213,6 +219,8 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    ruby-vips (2.2.0)
+      ffi (~> 1.12)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -267,11 +275,13 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  acts-as-taggable-on
   bootsnap
   bootstrap
   capybara
   debug
   devise (~> 4.9)
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   puma (>= 5.0)

@@ -1,0 +1,32 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3 row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Question</label>
+    <div class="col-sm-10">
+      <%= form.text_area :question, class: "form-control" %>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Answer</label>
+    <div class="col-sm-10">
+      <%= form.rich_text_area :answer,class: "form-control" %>
+    </div>
+  </div>
+  <div>
+    <%= form.button "Submit" , class: "btn btn-primary mb-3"%>
+  </div>
+<% end %>
+
+
+
