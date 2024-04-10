@@ -1,13 +1,15 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = current_user.posts
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    @post.update(views: @post.views+1)
   end
 
   # GET /posts/new

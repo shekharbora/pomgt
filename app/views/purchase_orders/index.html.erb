@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Purchase orders</h1>
+
+<div id="purchase_orders">
+  <table class="table">
+      <thead>
+        <th>
+          PO Number
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          PO Number
+        </th>
+      </thead>
+      <tbody>
+      <% @purchase_orders.each do |purchase_order| %>
+        <tr>
+          <td>
+            <%= purchase_order.po_number %>
+          </td>
+          <td>
+            <%= purchase_order.status %>
+          </td>
+          <td>
+           <%= link_to "Show this purchase order", purchase_order %>
+          </td>
+        </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+
+<%= link_to "New purchase order", new_purchase_order_path %>

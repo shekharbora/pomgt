@@ -1,0 +1,121 @@
+<%= form_with model: purchase_order,class: "row g-3", data: { controller: 'rails-nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper'} do |form| %>
+
+  <% if purchase_order.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(purchase_order.errors.count, "error") %> prohibited this purchase_order from being saved:</h2>
+
+      <ul>
+        <% purchase_order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-md-6">
+    <%= form.label :po_number, style: "display: block", class: "form-label" %>
+    <%= form.text_field :po_number , class: "form-control"%>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :gst_no, style: "display: block", class: "form-label"%>
+    <%= form.text_field :gst_no , class: "form-control"%>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :payment_terms, style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :payment_terms , class: "form-control"%>
+  </div>
+   <div class="col-md-6">
+    <%= form.label :comments, style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :comments , class: "form-control"%>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :site_address, style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :site_address , class: "form-control"%>
+  </div>
+  <div class="col-md-6">
+    <%= form.label :billing_address, style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :billing_address , class: "form-control"%>
+  </div>
+  <div class="col-md-6">
+    <%= form.label :contact_person, style: "display: block", class: "form-label" %>
+    <%= form.text_field :contact_person , class: "form-control"%>
+  </div>
+  <div class="col-md-6">
+    <%= form.label :contact_person_phone, style: "display: block", class: "form-label" %>
+    <%= form.text_field :contact_person_phone , class: "form-control"%>
+  </div>
+  <div class="border mb-3 col-md-12">
+   <template data-rails-nested-form-target="template">
+      <%= form.fields_for :purchase_order_items, PurchaseOrderItem.new, child_index: 'NEW_RECORD' do |poi| %>
+        <%= render "item", poi: poi %>
+      <% end %>
+    </template>
+
+    <%= form.fields_for :purchase_order_items do |poi| %>
+       <%= render "item", poi: poi %>
+    <% end %>
+   
+    <!-- Inserted elements will be injected before that target. -->
+    <div data-rails-nested-form-target="target"></div>
+    <div class="mt-2 mb-2">
+        <button type="button" data-action="rails-nested-form#add" class="btn btn-primary mt-2 mb-2">Add Item</button>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <%= form.button "submit" , class: "btn btn-primary"%>
+  </div>
+
+<% end %>
+
+<%# <form class="row g-3">
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword4">
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="col-12">
+    <label for="inputAddress2" class="form-label">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">City</label>
+    <input type="text" class="form-control" id="inputCity">
+  </div>
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">State</label>
+    <select id="inputState" class="form-select">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <label for="inputZip" class="form-label">Zip</label>
+    <input type="text" class="form-control" id="inputZip">
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </div>
+</form> %>
+<style type="text/css">
+  .trix-button-group--file-tools {
+  display: none !important;
+}
+</style>

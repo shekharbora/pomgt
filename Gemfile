@@ -74,3 +74,12 @@ gem "devise", "~> 4.9"
 gem "rails_feather", "~> 0.1.0"
 
 gem 'acts-as-taggable-on'
+
+gem 'omniauth-facebook'
+
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-github', '~> 2.0.0'
+gem 'pry'
+gem "pagy", "~> 8.0"
+gem 'prawn-rails'
+gem "wicked_pdf", "~> 2.8"

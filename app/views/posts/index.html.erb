@@ -1,14 +1,18 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
+<div class="col-md-8">
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="pb-2 mb-0">Interview Question</h6>
+    <hr class="bg-danger border-2 border-top" />
+    <% if @posts.present?%>
+      <% @posts.each do |post| %>
+        <%= render post %>
+        <p>
+          <%= link_to "Show this post", post %>
+        </p>
+      <% end %>
+    <%else%>
+        <p class="text-center p-4"> No Post Found!! <strong>Post now <%= link_to "New post", new_post_path %></strong></p>
+    <%end%>
+  </div>
+  
 </div>
-
-<%= link_to "New post", new_post_path %>
+ 

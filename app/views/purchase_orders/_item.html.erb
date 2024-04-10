@@ -1,0 +1,28 @@
+<div class="nested-form-wrapper row mt-3" data-new-record="<%= poi.object.new_record? %>">
+
+<div class="col-md-3">
+  <%= poi.label :item_desctiption, style: "display: block", class: "form-label" %>
+  <%= poi.text_field :item_desctiption , class: "form-control"%>
+</div>
+<div class="col-md-2">
+  <%= poi.label :hsn_code, style: "display: block", class: "form-label" %>
+  <%= poi.text_field :hsn_code , class: "form-control"%>
+</div>
+<div class="col-md-2">
+  <%= poi.label :qty, style: "display: block", class: "form-label" %>
+  <%= poi.text_field :qty , class: "form-control"%>
+</div>
+<div class="col-md-1">
+  <%= poi.label :unit, style: "display: block", class: "form-label" %>
+  <%= poi.text_field :unit , class: "form-control"%>
+</div>
+<div class="col-md-2">
+  <%= poi.label :basic_price, style: "display: block", class: "form-label" %>
+  <%= poi.text_field :basic_price , class: "form-control"%>
+</div>
+<div class="col-md-2 mt-4">
+  <button type="button" data-action="rails-nested-form#remove" class="btn btn-primary">Remove item</button>
+ </div>
+
+  <%= poi.hidden_field :_destroy %>
+</div>

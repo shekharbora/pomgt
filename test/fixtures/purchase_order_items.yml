@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_desctiption: MyText
+  hsn_code: MyString
+  qty: MyString
+  unit: MyString
+  basic_price: MyString
+  total_amount: MyString
+
+two:
+  item_desctiption: MyText
+  hsn_code: MyString
+  qty: MyString
+  unit: MyString
+  basic_price: MyString
+  total_amount: MyString

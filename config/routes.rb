@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :purchase_order_items
+  resources :purchase_orders do
+    member do
+    get 'download'
+  end
+  end
   resources :posts
   devise_for :users
   get 'home/index'
