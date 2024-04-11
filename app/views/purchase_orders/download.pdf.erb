@@ -13,352 +13,331 @@
     .header { margin-bottom: 20px; }
     .footer { margin-top: 20px; }
 </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<div class="document active">
-  <div class="spreadSheetGroup"> 
-    <table class="shipToFrom">
-      <tbody>
-        <tr>
-          <td style="width:10.3%"><%= image_tag("logo1.jpeg", width: 100,class: "navbar-brand place-right") %></td>
-          <td style="width:33.3%"><h3>Kaluwala construction private limited</h3></td>
-        </tr>
-      </tbody>
-    </table>
 
-    <table class="shipToFrom">
-      <thead style="font-weight:bold">
-        <tr>
-          <th>TO</th>
-          <th>SHIP TO</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td contenteditable="true" style="width:50%"> 
-            <%=purchase_order.site_address %> 
+<div class="col-12 border border-dark p-4">
+  <table class="table table-sm table-bordered border-dark">
+    <tbody> 
+      <tr>
+        <td style="width: 575px;" >
+          <p class="fs-6">
+          <b>Kaluwala Construction Pvt Ltd.</b><br>
+          Plot No-148, Sector-5, IMT Manesar, Gurgaon-122050,Haryana<br>
+          Local +91-124-4568666 
+          </p>
+        </td>
+        <td> 
+          <img src="https://play-lh.googleusercontent.com/DTzWtkxfnKwFO3ruybY1SKjJQnLYeuK3KmQmwV5OQ3dULr5iXxeEtzBLceultrKTIUTr" width="100px"> Kaluwala Construction Pvt Ltd
+        </td>
+      </tr>
+      <tr>
+          <td colspan="2">
+            <h5>PURCHASE ORDER</h5>
           </td>
-          <td contenteditable="true" style="width:50%">
-            Apollo Painting & Wallcovering<br/>
-            ATTN: <br/>
-            535 N. Eucalyptus Ave.<br/>
-            Inglewood, CA 90302<br/>
-            Phone (310)672-3080
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <hr style="visibility:hidden"/>
-    
-    
-    <table class="tableBorder">
-      <thead style="font-weight:bold">
-        <tr>
-          <th>Po Number</th>
-          <th>GST No</th>
-          <th>SIDEMARK</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td contenteditable="true" style="width:33.3%"><%= purchase_order.po_number %></td>
-          <td contenteditable="true" style="width:33.3%"><%= purchase_order.gst_no %></td>
-          <td contenteditable="true" style="width:33.3%"></td>
-        </tr>
-      </tbody>
-    </table>
-    
-    
-    
-    <table class="proposedWork" width="100%" style="margin-top:20px">
-      <thead>
-        <th>QTY</th>
-        <th>UNIT</th>
-        <th>DESCRIPTION</th>
-        <th>COST</th>
-        <th class="amountColumn">TOTAL</th>
-        <%# <th class="docEdit trAdd">+</th> %>
-      </thead>
-      <tbody>
-        <% total = 0%>
-        <% purchase_order.purchase_order_items.each do |poi|%>
+      </tr>
+    </tbody>
+  </table>
+    <div class="row">
+    <div class="col-6"> 
+      <table class="table table-sm table-bordered border-dark">
+        <thead>
           <tr>
-            <td contenteditable="true"><%= poi.qty%></td>
-            <td class="unit" contenteditable="true"><%= poi.unit&.upcase%></td>
-            <td contenteditable="true" class="description"><%= poi.item_desctiption%></td>
-            <td class="amount" contenteditable="true"><%= poi.basic_price%></td>
-            <td class="amount amountColumn rowTotal" contenteditable="true"><%= amount = [(poi.basic_price.to_f)*(poi.qty.to_f),0].max%></td>
-            <% total += amount%>
-            <%# <td class="docEdit tdDelete">X</td> %>
+            <td class="table-dark">
+              Billing Name and Address
+            </td>
           </tr>
-        <%end%>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td style="border:none"></td>
-          <td style="border:none"></td>
-          <td style="border:none"></td>
-        <td style="border:none;text-align:right">SUBTOTAL:</td>
-        <td class="amount subtotal"><%= total%></td>
-        <td class="docEdit"></td>
-        </tr>
-        <tr>
-          <td style="border:none"></td>
-          <td style="border:none"></td>
-          <td style="border:none"></td>
-        <td style="border:none;text-align:right">GST@18%:</td>
-        <td class="amount" contenteditable="true"><%= gst = (total*18)/100%></td>
-        <td class="docEdit"></td>
-        </tr>
-        <%# <tr>
-          <td style="border:none"></td>
-          <td style="border:none"></td>
-          <td style="border:none"></td>
-        <td style="border:none;text-align:right;white-space:nowrap">SHIPPING & HANDLING:</td>
-        <td class="amount" contenteditable="true">0.00</td>
-        <td class="docEdit"></td>
-        </tr> %>
-        <tr>
-          <td style="border:none"></td>
-          <td style="border:none"></td>
-          <td style="border:none"></td>
-        <td style="border:none;text-align:right">TOTAL:</td>
-        <td class="total amount" contenteditable="true""><%= (total+ gst).round(3)%></td>
-        <td class="docEdit"></td>
-        </tr>
-      </tfoot>
-    </table>
-
-    
-    
-    <table width="100%">
-      <tbody>
-        <tr>
-          <td style="50%" style="vertical-align:top">
-            <table style="width:100%">
-              <tbody>
-                <tr>
-                  <td style="text-align:left">
-                  <p>1. Please send two copies of your invoice.</p>
-<p>2. Enter this order in accordance with the prices, terms, delivery method, and specifications listed above.</p>
-<p>3. Please notify us immediately if you are unable to ship as specified.</p>
-<p>4. Send all correspondence to:</p>
-<p style="padding-left:20px">Apollo Painting & Wallcovering
-  <br/>
-535 N. Eucalyptus Ave.
-  <br/>
-Inglewood, CA 90302
-  <br/>
-Phone (714)326-3025
-                  </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-          <td style="padding-left:40px; width:50%; vertical-align:top">
-            <table style="width:100%">
-              <tbody>
-                <tr>
-                  <td style="text-align:left">
-                    <strong>COMMENTS:</strong>
-                  </td>
-                </tr>
-                <tr>
-                  <td contenteditable="true" style="text-align:left;border: 1px solid #000">Please ship all goods to our office using our UPS account #1234</td>
-                </tr>
-                <tr>
-                  <td style="padding-top:60px">
-                    Authorized by: _____________________________ Date: __________
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-  
-
+        </thead>
+        <tbody> 
+          <tr>
+            <td style="height: 138px;">
+              <p class="fs-6">
+                <b>Kaluwala Construction Pvt Ltd.</b><br>
+                Plot No-148, Sector-5, IMT Manesar, Gurgaon-122050,Haryana<br>
+                Local +91-124-4568666 
+                </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6"> 
+      <table class="table table-sm table-bordered border-dark">
+        <thead>
+          <tr>
+            <td class="table-dark">
+              Vender Name and Address
+            </td>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr>
+            <td style="height: 138px;">
+              <p class="fs-6">
+                <b>Green Star Pvt Ltd.</b><br>
+                Plot No-148, Sector-5, IMT Manesar, Gurgaon-122050,Haryana<br>
+                Local +91-124-4568666 
+                </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-6"> 
+      <table class="table table-sm table-bordered border-dark">
+        <tbody> 
+          <tr>
+            <td class="table-dark" style="width: 175px;">
+              PO Number : 
+            </td>
+             <td>
+              PO/1712812263/11
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6"> 
+      <table class="table table-sm table-bordered border-dark">
+        <tbody> 
+          <tr>
+            <td class="table-dark" style="width: 175px;">
+             PO Date :
+            </td>
+             <td>
+              2024-04-11
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6"> 
+      <table class="table table-sm table-bordered border-dark">
+        <tbody> 
+          <tr>
+            <td class="table-dark" style="width: 175px;">
+              Group : 
+            </td>
+             <td>
+              IT
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6"> 
+      <table class="table table-sm table-bordered border-dark">
+        <tbody> 
+          <tr>
+            <td class="table-dark" style="width: 175px;">
+             Project :
+            </td>
+             <td>
+              Gurugram
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6"> 
+      <table class="table table-sm table-bordered border-dark">
+        <thead>
+          <tr>
+            <td colspan="2" class="table-dark">
+              Shipping Address
+            </td>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr>
+             <td style="height: 131px;">
+              Greenstar Research and Development India Pvt. Ltd.<br>
+              Plot No-148, Sector 5, IMT Manesar<br>
+              Gurgaon-122050, Haryana India<br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6"> 
+      <table class="table table-sm table-bordered border-dark">
+        <thead>
+          <tr>
+            <td colspan="2" class="table-dark">
+               Buyer's Information
+            </td>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr>
+            <td>
+              Name : 
+            </td>
+             <td>
+              Karmender Singh
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Designation: 
+            </td>
+             <td>
+               Sr IT Manager
+            </td>
+          </tr>
+          <tr>
+            <td>
+                Phone :
+            </td>
+             <td>
+                9891339902
+            </td>
+          </tr>
+          <tr>
+            <td>
+                E-Mail: 
+            </td>
+             <td>
+                karmender@greenstarled.com  
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <table class="table table-sm table-bordered border-dark">
+    <thead class="table-dark"> 
+      <tr>
+        <td>
+          S. No #
+        </td>
+        <td>
+          ITEM DESCRIPTION 
+        </td>
+        <th>
+          Per Unit Price (Rs)
+        </td>
+        <td>
+           Quantity
+        </td>
+         <td>
+          Cost(Rs)
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>HDD 1TB</td>
+        <td>2345</td>
+        <td>323</td>
+        <td>232131</td>
+        <td>232131</td>
+      </tr>
+      <tr>
+        <td>HDD 1TB</td>
+        <td>2345</td>
+        <td>323</td>
+        <td>232131</td>
+        <td>232131</td>
+      </tr>
+      <tr>
+        <td>HDD 1TB</td>
+        <td>2345</td>
+        <td>323</td>
+        <td>232131</td>
+        <td>232131</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><b>Basic Price</b></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>GST@18.00%</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><b>Total</b></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col-6"> 
+      <table class="table table-sm table-bordered border-dark">
+        <thead>
+          <tr>
+            <td colspan="2" class="table-dark">
+              Terms and Conditions :
+            </td>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr>
+             <td style="height: 160px;">
+              1. By accepting the PO you abide by the terms and conditions of<br/>
+                GSRD and no change in this PO valid unless in writing by<br/>
+                GSRD.<br/>
+                2. Taxes will be extra as define by GST Law of India.<br/>
+                3. Mention the same Part Name and No in the invoice as per PO<br/>
+                otherwise invoice will not accept by GSRD.<br/>
+                4. Supplier must need to send the acceptance in writing of PO<br/>
+                within 24 hours from receipt of PO from GSRD.<br/>
+                5. Delivery Date/Schedule : within 2 working days<br/>
+                6. PO Cancel Date :<br/>
+                7. Payment Terms : 30 days on receipt of material at GSRD.<br/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6"> 
+      <table class="table table-sm table-bordered border-dark">
+        <thead>
+          <tr>
+            <td class="table-dark">
+              Authorized Signatory
+            </td>
+            <td class="table-dark">
+               Company Seal
+            </td>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr>
+            <td class="p-5">
+            </td>
+            <td class="p-5">  
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
-<style type="text/css">
-  /* Housekeeping */
-body{
-  font-size:12px;
-}
-.spreadSheetGroup{
-    /*font:0.75em/1.5 sans-serif;
-    font-size:14px;
-  */
-    color:#333;
-    background-color:#fff;
-    padding:1em;
-}
-
-/* Tables */
-.spreadSheetGroup table{
-    width:100%;
-    margin-bottom:1em;
-    border-collapse: collapse;
-}
-.spreadSheetGroup .proposedWork th{
-    background-color:#eee;
-}
-.tableBorder th{
-  background-color:#eee;
-}
-.spreadSheetGroup th,
-.spreadSheetGroup tbody td{
-    padding:0.5em;
-
-}
-.spreadSheetGroup tfoot td{
-    padding:0.5em;
-
-}
-.spreadSheetGroup td:focus { 
-  border:1px solid #fff;
-  -webkit-box-shadow:inset 0px 0px 0px 2px #5292F7;
-  -moz-box-shadow:inset 0px 0px 0px 2px #5292F7;
-  box-shadow:inset 0px 0px 0px 2px #5292F7;
-  outline: none;
-}
-.spreadSheetGroup .spreadSheetTitle{ 
-  font-weight: bold;
-}
-.spreadSheetGroup tr td{
-  text-align:center;
-}
-/*
-.spreadSheetGroup tr td:nth-child(2){
-  text-align:left;
-  width:100%;
-}
-*/
-
-/*
-.documentArea.active tr td.calculation{
-  background-color:#fafafa;
-  text-align:right;
-  cursor: not-allowed;
-}
-*/
-.spreadSheetGroup .calculation::before, .spreadSheetGroup .groupTotal::before{
-  /*content: "$";*/
-}
-.spreadSheetGroup .trAdd{
-  background-color: #007bff !important;
-  color:#fff;
-  font-weight:800;
-  cursor: pointer;
-}
-.spreadSheetGroup .tdDelete{
-  background-color: #eee;
-  color:#888;
-  font-weight:800;
-  cursor: pointer;
-}
-.spreadSheetGroup .tdDelete:hover{
-  background-color: #df5640;
-  color:#fff;
-  border-color: #ce3118;
-}
-.documentControls{
-  text-align:right;
-}
-.spreadSheetTitle span{
-  padding-right:10px;
-}
-
-.spreadSheetTitle a{
-  font-weight: normal;
-  padding: 0 12px;
-}
-.spreadSheetTitle a:hover, .spreadSheetTitle a:focus, .spreadSheetTitle a:active{
-  text-decoration:none;
-}
-.spreadSheetGroup .groupTotal{
-  text-align:right;
-}
-
-
-
-table.style1 tr td:first-child{
-  font-weight:bold;
-  white-space:nowrap;
-  text-align:right;
-}
-table.style1 tr td:last-child{
-  border-bottom:1px solid #000;
-}
-
-
-
-table.proposedWork td,
-table.proposedWork th,
-table.exclusions td,
-table.exclusions th{
-  border:1px solid #000;
-}
-table.proposedWork thead th, table.exclusions thead th{
-  font-weight:bold;
-}
-table.proposedWork td,
-table.proposedWork th:first-child,
-table.exclusions th, table.exclusions td{
-  text-align:left;
-  vertical-align:top;
-}
-table.proposedWork td.description{
-  width:80%;
-}
-
-table.proposedWork td.amountColumn, table.proposedWork th.amountColumn,
-table.proposedWork td:last-child, table.proposedWork th:last-child{
-  text-align:center;
-  vertical-align:top;
-  white-space:nowrap;
-}
-
-.amount:before, .total:before{
-  content: "₹";
-}
-table.proposedWork tfoot td:first-child{
-  border:none;
-  text-align:right;
-}
-table.proposedWork tfoot tr:last-child td{
-  font-size:16px;
-  font-weight:bold;
-}
-
-table.style1 tr td:last-child{
-  width:100%;
-}
-table.style1 td:last-child{
-  text-align:left;
-}
-td.tdDelete{
-  width:1%;
-}
-
-table.coResponse td{text-align:left}
-table.shipToFrom td, table.shipToFrom th{text-align:left}
-
-.docEdit{border:0 !important}
-
-.tableBorder td, .tableBorder th{
-  border:1px solid #000;
-}
-.tableBorder th, .tableBorder td{text-align:center}
-
-table.proposedWork td, table.proposedWork th{text-align:center}
-table.proposedWork td.description{text-align:left}
-</style>
 
 </body>
 </html>

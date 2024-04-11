@@ -17,7 +17,7 @@
         <div class="card-body">
           <h5 class="card-title">Total PO</h5>
           <p class="card-text"><h6 class="mb-0"><%= @total_po %></h6></p>
-          <a href="#" class="btn btn-sm btn-primary">View All</a>
+          <%= link_to "View All",purchase_orders_path, class: "btn btn-sm btn-primary" %>
         </div>
       </div>
     </div>

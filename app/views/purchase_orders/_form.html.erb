@@ -20,7 +20,14 @@
     <%= form.label :gst_no, style: "display: block", class: "form-label"%>
     <%= form.text_field :gst_no , class: "form-control"%>
   </div>
-
+  <div class="col-md-6">
+    <%= form.label :billing_address, style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :billing_address , class: "form-control"%>
+  </div>
+  <div class="col-md-6">
+    <%= form.label "Vender Name and Address", style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :billing_address , class: "form-control"%>
+  </div>
   <div class="col-md-6">
     <%= form.label :payment_terms, style: "display: block", class: "form-label" %>
     <%= form.rich_text_area :payment_terms , class: "form-control"%>
@@ -118,4 +125,44 @@
   .trix-button-group--file-tools {
   display: none !important;
 }
+.trix-button--icon-undo {
+  display: none !important;
+}
+.trix-button--icon-redo {
+  display: none !important;
+}
+
+.trix-button {
+  display: inline-block;
+  height: 24px !important;
+  width: 28px !important;
+  padding: 3px 5px !important;
+  cursor: pointer;
+}
+
+
+.trix-button--icon-underline {
+  padding-top: 4px;
+}
+
+.trix-button.trix-active .ql-stroke {
+  stroke: #0a76d1;
+}
+
+.trix-button.trix-active .ql-fill {
+  fill: #0a76d1;
+}
+
+.trix-button:hover {
+  color: black;
+}
+
+.trix-button:hover .ql-stroke {
+  stroke: black;
+}
+
+.trix-button:hover .ql-fill {
+  fill: black;
+}
+
 </style>
