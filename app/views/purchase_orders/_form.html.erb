@@ -26,17 +26,17 @@
   </div>
   <div class="col-md-6">
     <%= form.label "Vender Name and Address", style: "display: block", class: "form-label" %>
-    <%= form.rich_text_area :billing_address , class: "form-control"%>
-  </div>
-  <div class="col-md-6">
-    <%= form.label :payment_terms, style: "display: block", class: "form-label" %>
-    <%= form.rich_text_area :payment_terms , class: "form-control"%>
-  </div>
-   <div class="col-md-6">
-    <%= form.label :comments, style: "display: block", class: "form-label" %>
-    <%= form.rich_text_area :comments , class: "form-control"%>
+    <%= form.rich_text_area :vender_detail , class: "form-control"%>
   </div>
 
+  <div class="col-md-6">
+    <%= form.label :group, style: "display: block", class: "form-label" %>
+    <%= form.text_field :group , class: "form-control"%>
+  </div>
+  <div class="col-md-6">
+    <%= form.label :project, style: "display: block", class: "form-label" %>
+    <%= form.text_field :project , class: "form-control"%>
+  </div>
   <div class="col-md-6">
     <%= form.label :site_address, style: "display: block", class: "form-label" %>
     <%= form.rich_text_area :site_address , class: "form-control"%>
@@ -45,14 +45,33 @@
     <%= form.label :billing_address, style: "display: block", class: "form-label" %>
     <%= form.rich_text_area :billing_address , class: "form-control"%>
   </div>
+   <hr/>
   <div class="col-md-6">
     <%= form.label :contact_person, style: "display: block", class: "form-label" %>
     <%= form.text_field :contact_person , class: "form-control"%>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-5">
     <%= form.label :contact_person_phone, style: "display: block", class: "form-label" %>
     <%= form.text_field :contact_person_phone , class: "form-control"%>
   </div>
+  <div class="col-md-6">
+    <%= form.label :contact_person_email, style: "display: block", class: "form-label" %>
+    <%= form.text_field :contact_person_email , class: "form-control"%>
+  </div>
+  <div class="col-md-5">
+    <%= form.label :contact_person_designation, style: "display: block", class: "form-label" %>
+    <%= form.text_field :contact_person_designation , class: "form-control"%>
+  </div>
+
+   <div class="col-md-6">
+    <%= form.label :payment_terms, style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :payment_terms , class: "form-control"%>
+  </div>
+   <div class="col-md-6">
+    <%= form.label :comments, style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :comments , class: "form-control"%>
+  </div>
+
   <div class="border mb-3 col-md-12">
    <template data-rails-nested-form-target="template">
       <%= form.fields_for :purchase_order_items, PurchaseOrderItem.new, child_index: 'NEW_RECORD' do |poi| %>

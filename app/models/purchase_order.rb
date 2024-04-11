@@ -5,6 +5,7 @@ class PurchaseOrder < ApplicationRecord
 	has_rich_text :site_address
 	has_rich_text :billing_address
 	has_rich_text :payment_terms
+	has_rich_text :vender_detail
 
 	attr_accessor :comments
 	enum status: %w[pending approve cancel], _default: "pending"
