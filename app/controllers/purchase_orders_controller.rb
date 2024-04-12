@@ -77,7 +77,7 @@ class PurchaseOrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def purchase_order_params
-      params.require(:purchase_order).permit(:po_number, :gst_no, :payment_terms, :contact_person, :site_address, :billing_address, purchase_order_items_attributes: [:item_desctiption,:hsn_code,:qty, :unit, :basic_price, :_destroy])
+      params.require(:purchase_order).permit(:po_number, :gst_no, :payment_terms, :contact_person, :site_address, :billing_address, :vender_detail, :department_id, :project_id, :gst_per,:comment, purchase_order_items_attributes: [:id,:item_desctiption,:hsn_code,:qty, :unit, :basic_price, :_destroy])
     end
 end
 

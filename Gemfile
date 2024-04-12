@@ -83,3 +83,4 @@ gem 'pry'
 gem "pagy", "~> 8.0"
 gem 'prawn-rails'
 gem "wicked_pdf", "~> 2.8"
+gem 'activeadmin'

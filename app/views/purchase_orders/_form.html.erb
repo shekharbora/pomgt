@@ -12,15 +12,6 @@
     </div>
   <% end %>
   <div class="col-md-6">
-    <%= form.label :po_number, style: "display: block", class: "form-label" %>
-    <%= form.text_field :po_number , class: "form-control"%>
-  </div>
-
-  <div class="col-md-6">
-    <%= form.label :gst_no, style: "display: block", class: "form-label"%>
-    <%= form.text_field :gst_no , class: "form-control"%>
-  </div>
-  <div class="col-md-6">
     <%= form.label :billing_address, style: "display: block", class: "form-label" %>
     <%= form.rich_text_area :billing_address , class: "form-control"%>
   </div>
@@ -30,48 +21,23 @@
   </div>
 
   <div class="col-md-6">
-    <%= form.label :group, style: "display: block", class: "form-label" %>
-    <%= form.text_field :group , class: "form-control"%>
+    <%= form.label "Group", style: "display: block", class: "form-label" %>
+    <%= form.select :department_id, Department.all.map { |d| [d.code, d.id] },{}, { class: "form-control" } %>
   </div>
   <div class="col-md-6">
-    <%= form.label :project, style: "display: block", class: "form-label" %>
-    <%= form.text_field :project , class: "form-control"%>
-  </div>
-  <div class="col-md-6">
-    <%= form.label :site_address, style: "display: block", class: "form-label" %>
-    <%= form.rich_text_area :site_address , class: "form-control"%>
-  </div>
-  <div class="col-md-6">
-    <%= form.label :billing_address, style: "display: block", class: "form-label" %>
-    <%= form.rich_text_area :billing_address , class: "form-control"%>
-  </div>
-   <hr/>
-  <div class="col-md-6">
-    <%= form.label :contact_person, style: "display: block", class: "form-label" %>
-    <%= form.text_field :contact_person , class: "form-control"%>
-  </div>
-  <div class="col-md-5">
-    <%= form.label :contact_person_phone, style: "display: block", class: "form-label" %>
-    <%= form.text_field :contact_person_phone , class: "form-control"%>
-  </div>
-  <div class="col-md-6">
-    <%= form.label :contact_person_email, style: "display: block", class: "form-label" %>
-    <%= form.text_field :contact_person_email , class: "form-control"%>
-  </div>
-  <div class="col-md-5">
-    <%= form.label :contact_person_designation, style: "display: block", class: "form-label" %>
-    <%= form.text_field :contact_person_designation , class: "form-control"%>
-  </div>
-
-   <div class="col-md-6">
-    <%= form.label :payment_terms, style: "display: block", class: "form-label" %>
-    <%= form.rich_text_area :payment_terms , class: "form-control"%>
+    <%= form.label "Project", style: "display: block", class: "form-label" %>
+    <%#= form.text_field :project , class: "form-control"%>
+    <%= form.select :project_id, Project.all.map { |d| [d.name, d.id] },{}, { class: "form-control" } %>
   </div>
    <div class="col-md-6">
-    <%= form.label :comments, style: "display: block", class: "form-label" %>
-    <%= form.rich_text_area :comments , class: "form-control"%>
+    <%= form.label :po_number, style: "display: block", class: "form-label" %>
+    <%= form.text_field :po_number , class: "form-control"%>
   </div>
 
+  <div class="col-md-6">
+    <%= form.label "GST@%", style: "display: block", class: "form-label"%>
+    <%= form.number_field :gst_per , class: "form-control"%>
+  </div>
   <div class="border mb-3 col-md-12">
    <template data-rails-nested-form-target="template">
       <%= form.fields_for :purchase_order_items, PurchaseOrderItem.new, child_index: 'NEW_RECORD' do |poi| %>
@@ -90,56 +56,20 @@
     </div>
   </div>
 
+  <div class="col-md-6">
+    <%= form.label :payment_terms, style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :payment_terms , class: "form-control"%>
+  </div>
+   <div class="col-md-6">
+    <%= form.label "Remarks", style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :comment , class: "form-control"%>
+  </div>
   <div class="col-12">
     <%= form.button "submit" , class: "btn btn-primary"%>
   </div>
 
 <% end %>
 
-<%# <form class="row g-3">
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </div>
-</form> %>
 <style type="text/css">
   .trix-button-group--file-tools {
   display: none !important;
