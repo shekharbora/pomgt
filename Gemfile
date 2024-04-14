@@ -84,3 +84,7 @@ gem "pagy", "~> 8.0"
 gem 'prawn-rails'
 gem "wicked_pdf", "~> 2.8"
 gem 'activeadmin'
+gem "font-awesome-rails", "~> 4.7"
+gem "chartkick", "~> 5"
+
+gem "groupdate", "~> 6.4"

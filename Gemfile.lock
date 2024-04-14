@@ -112,6 +112,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chartkick (5.0.6)
     coderay (1.1.3)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
@@ -134,10 +135,14 @@ GEM
     faraday-net_http (3.1.0)
       net-http
     ffi (1.16.3)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
     globalid (1.2.1)
+      activesupport (>= 6.1)
+    groupdate (6.4.0)
       activesupport (>= 6.1)
     has_scope (0.8.2)
       actionpack (>= 5.2)
@@ -385,8 +390,11 @@ DEPENDENCIES
   bootsnap
   bootstrap
   capybara
+  chartkick (~> 5)
   debug
   devise (~> 4.9)
+  font-awesome-rails (~> 4.7)
+  groupdate (~> 6.4)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

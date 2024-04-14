@@ -1,5 +1,6 @@
 class PurchaseOrder < ApplicationRecord
 
+	
 	has_many :purchase_order_items
 	accepts_nested_attributes_for :purchase_order_items, allow_destroy: true, reject_if: :all_blank
 	has_rich_text :billing_address
@@ -7,10 +8,14 @@ class PurchaseOrder < ApplicationRecord
 	has_rich_text :vender_detail
 	has_rich_text :comment
 
+	after_commit :generate_request
+
 	belongs_to :project
 	belongs_to :department
 	belongs_to :user
 
+
+	has_many :approval_requests
 
 	validates :po_number, presence: true, uniqueness: true
 
@@ -41,5 +46,9 @@ class PurchaseOrder < ApplicationRecord
 	  self.po_number
 	end
 
+
+	def generate_request
+		approval_requests.create(user_id: self.user_id,approver_id: self.user&.approver_users&.last&.id)
+	end
 	
 end

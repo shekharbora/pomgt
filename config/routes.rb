@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :purchase_order_items
   resources :purchase_orders do
+     resource :approval_request, only: [:create, :update, :show]
     member do
     get 'download'
   end

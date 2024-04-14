@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_11_130814) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_14_080931) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -73,6 +73,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_11_130814) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "approval_requests", force: :cascade do |t|
+    t.integer "approver_id"
+    t.integer "user_id", null: false
+    t.integer "purchase_order_id", null: false
+    t.integer "status", default: 0
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["purchase_order_id"], name: "index_approval_requests_on_purchase_order_id"
+    t.index ["user_id"], name: "index_approval_requests_on_user_id"
+  end
+
+  create_table "approver_users", force: :cascade do |t|
+    t.integer "approver_id"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_approver_users_on_user_id"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -184,12 +204,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_11_130814) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.string "designation"
+    t.integer "department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "approval_requests", "purchase_orders"
+  add_foreign_key "approval_requests", "users"
+  add_foreign_key "approver_users", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "taggings", "tags"
 end

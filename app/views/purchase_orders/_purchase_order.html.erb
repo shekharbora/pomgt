@@ -2,19 +2,19 @@
   <table class="table table-sm table-bordered border-dark">
     <tbody> 
       <tr>
-        <td style="width: 575px;" >
-          <p class="fs-6">
+        <td class="text-center "> 
+          <%= image_tag("logo1.png", width: 100,class: "text-center") %> 
+          </td>
+        <td >
+          <p class=" p-4 fs-6">
           <b>Kaluwala Construction Pvt Ltd.</b><br>
           Plot No-148, Sector-5, IMT Manesar, Gurgaon-122050,Haryana<br>
           Local +91-124-4568666 
           </p>
         </td>
-        <td> 
-          <%= image_tag("logo1.jpeg", width: 100,class: "navbar-brand") %> Kaluwala Construction Pvt Ltd.
-          </td>
       </tr>
       <tr>
-          <td colspan="2">
+          <td colspan="2" class="text-center">
             <h5>PURCHASE ORDER</h5>
           </td>
       </tr>
@@ -26,7 +26,7 @@
         <thead>
           <tr>
             <td class="table-dark">
-              Billing Name and Address
+                Billing Name and Address
             </td>
           </tr>
         </thead>
@@ -34,10 +34,8 @@
           <tr>
             <td style="height: 138px;">
               <p class="fs-6">
-                <b>Kaluwala Construction Pvt Ltd.</b><br>
-                Plot No-148, Sector-5, IMT Manesar, Gurgaon-122050,Haryana<br>
-                Local +91-124-4568666 
-                </p>
+                 <%= @purchase_order.billing_address%> 
+              </p>
             </td>
           </tr>
         </tbody>
@@ -56,9 +54,7 @@
           <tr>
             <td style="height: 138px;">
               <p class="fs-6">
-                <b>Green Star Pvt Ltd.</b><br>
-                Plot No-148, Sector-5, IMT Manesar, Gurgaon-122050,Haryana<br>
-                Local +91-124-4568666 
+                <%= @purchase_order.vender_detail%>  
                 </p>
             </td>
           </tr>
@@ -75,7 +71,7 @@
               PO Number : 
             </td>
              <td>
-              PO/1712812263/11
+              <%= @purchase_order.po_number%>
             </td>
           </tr>
         </tbody>
@@ -89,7 +85,7 @@
              PO Date :
             </td>
              <td>
-              2024-04-11
+              <%= @purchase_order.created_at.strftime("%D")%>
             </td>
           </tr>
         </tbody>
@@ -106,7 +102,7 @@
               Group : 
             </td>
              <td>
-              IT
+              <%= @purchase_order.department&.code%>
             </td>
           </tr>
         </tbody>
@@ -120,7 +116,7 @@
              Project :
             </td>
              <td>
-              Gurugram
+              <%= @purchase_order.project&.name%>
             </td>
           </tr>
         </tbody>
@@ -141,9 +137,7 @@
         <tbody> 
           <tr>
              <td style="height: 131px;">
-              Greenstar Research and Development India Pvt. Ltd.<br>
-              Plot No-148, Sector 5, IMT Manesar<br>
-              Gurgaon-122050, Haryana India<br>
+             <%= @purchase_order.project&.address%>
             </td>
           </tr>
         </tbody>
@@ -164,7 +158,7 @@
               Name : 
             </td>
              <td>
-              Karmender Singh
+              <%= @purchase_order&.user&.fullname%>
             </td>
           </tr>
           <tr>
@@ -172,7 +166,7 @@
               Designation: 
             </td>
              <td>
-               Sr IT Manager
+               <%= @purchase_order&.user&.designation%>
             </td>
           </tr>
           <tr>
@@ -180,7 +174,7 @@
                 Phone :
             </td>
              <td>
-                9891339902
+                <%= @purchase_order&.user&.phone_number%>
             </td>
           </tr>
           <tr>
@@ -188,7 +182,7 @@
                 E-Mail: 
             </td>
              <td>
-                karmender@greenstarled.com  
+                <%= @purchase_order&.user&.email%> 
               </td>
           </tr>
         </tbody>
@@ -206,11 +200,17 @@
         <td>
           ITEM DESCRIPTION 
         </td>
-        <th>
-          Per Unit Price (Rs)
+         <td>
+          Hsn Code 
         </td>
         <td>
-           Quantity
+          Quantity
+        </td>
+         <td>
+           Unit
+        </td>
+        <td>
+          Per Unit Price (Rs)
         </td>
          <td>
           Cost(Rs)
@@ -218,47 +218,46 @@
       </tr>
     </thead>
     <tbody>
+      <% total_basic_price = 0 %>
+      <% @purchase_order.purchase_order_items.each_with_index do |item,i|%>
+      <% basic_price = ((item.qty.to_f)*(item.basic_price.to_f))%>
+      <% total_basic_price += basic_price %>
+        <tr>
+          <td><%= i+1%></td>
+          <td><%= item.item_desctiption%></td>
+          <td><%= item.hsn_code%></td>
+          <td><%= item.qty%></td>
+          <td><%= item.unit%></td>
+          <td><%= item.basic_price%></td>
+          <td><%= basic_price%></td>
+        </tr>
+      <%end%>
       <tr>
-        <td>HDD 1TB</td>
-        <td>2345</td>
-        <td>323</td>
-        <td>232131</td>
-        <td>232131</td>
-      </tr>
-      <tr>
-        <td>HDD 1TB</td>
-        <td>2345</td>
-        <td>323</td>
-        <td>232131</td>
-        <td>232131</td>
-      </tr>
-      <tr>
-        <td>HDD 1TB</td>
-        <td>2345</td>
-        <td>323</td>
-        <td>232131</td>
-        <td>232131</td>
-      </tr>
-      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
         <td></td>
         <td></td>
         <td><b>Basic Price</b></td>
-        <td></td>
-        <td></td>
+        <td><%= total_basic_price%></td>
       </tr>
       <tr>
         <td></td>
         <td></td>
-        <td>GST@18.00%</td>
         <td></td>
         <td></td>
+        <td></td>
+        <td><b>GST@<%= @purchase_order.gst_per.to_f%>%</b></td>
+        <td><%= _gst_total = (total_basic_price *( @purchase_order.gst_per.to_f/100))%></td>
       </tr>
       <tr>
+        <td></td>
+        <td></td>
+        <td></td>
         <td></td>
         <td></td>
         <td><b>Total</b></td>
-        <td></td>
-        <td></td>
+        <td><%= total_basic_price+_gst_total%></td>
       </tr>
     </tbody>
   </table>

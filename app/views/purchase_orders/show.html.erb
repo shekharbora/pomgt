@@ -5,14 +5,11 @@
         <%= link_to "Download PO", download_purchase_order_path(@purchase_order,  format: :pdf), class: "btn btn-sm btn-outline-secondary" %> 
         <%= link_to "Edit this purchase order", edit_purchase_order_path(@purchase_order), class: "btn btn-sm btn-outline-secondary" %> 
         <%= link_to "Back to purchase orders", purchase_orders_path, class: "btn btn-sm btn-outline-secondary" %>
+        <%= link_to "Approve PO", "", class: "btn btn-sm btn-outline-secondary" %>
       </div>
     </div>
   </div>
 <%= render @purchase_order %>
 
-<div>
-  <%= link_to "Edit this purchase order", edit_purchase_order_path(@purchase_order) %> |
-  <%= link_to "Back to purchase orders", purchase_orders_path %>
+  <%#= button_to "Destroy this purchase order", @purchase_order, method: :delete %>
 
-  <%= button_to "Destroy this purchase order", @purchase_order, method: :delete %>
-</div>

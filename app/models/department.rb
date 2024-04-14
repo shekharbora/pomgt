@@ -10,4 +10,8 @@ class Department < ApplicationRecord
     ["purchase_orders"]
   end
   
+
+  def to_s
+    self.code
+  end
 end

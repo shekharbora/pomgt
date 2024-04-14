@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  approver_id: 1
+  user: one
+  purchase_order: one
+
+two:
+  approver_id: 1
+  user: two
+  purchase_order: two

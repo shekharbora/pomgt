@@ -10,3 +10,6 @@ pin "bootstrap", to: 'bootstrap.min.js', preload: true
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
 pin "@stimulus-components/rails-nested-form", to: "@stimulus-components--rails-nested-form.js" # @5.0.0
+pin '@fortawesome/fontawesome-free', to: 'https://ga.jspm.io/npm:@fortawesome/fontawesome-free@6.1.1/js/all.js'
+pin "chartkick", to: "chartkick.js"
+pin "Chart.bundle", to: "Chart.bundle.js"

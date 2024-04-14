@@ -1,38 +1,36 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block  sidebar collapse">
-     <div class="container">
-        <a class="navbar-brand" href="#">
-         
-          <%= image_tag("logo1.jpeg", width: 150,class: "navbar-brand") %>
-
-        </a>
-      </div>
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
-          <li class="nav-item  border">
-            <%= link_to "Dashboard", root_path, class: "nav-link" %>
+          <li class="nav-item text-white">
+             <%= link_to root_path, class: "nav-link" do  %>
+             <i class="fa-solid fa-gauge me-2"></i>
+               <%#= feather_icon "home", class: "feather icon-home me-2" %> Dashboard
+             <%end%>
           </li>
-          <li class="nav-item border">
-           
-              <%= link_to "New PO", new_purchase_order_path, class: "nav-link" %>
-            
+          <li class="nav-item text-white">
+              <%= link_to new_purchase_order_path, class: "nav-link text-dark" do  %>
+               <%= feather_icon "file-text", class: "feather icon-home me-2" %> New PO
+             <%end%>
           </li>
-          <li class="nav-item border">
-            <a class="nav-link" href="#">
-              <span data-feather="users"></span>
-              Approved PO
-            </a>
+          <li class="nav-item">
+             <%= link_to new_purchase_order_path, class: "nav-link" do  %>
+               <%= feather_icon "check-square", class: "feather icon-home me-2" %> Approved PO
+             <%end%>
           </li>
-          <li class="nav-item border">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Pending PO
-            </a>
+          <li class="nav-item">
+            <%= link_to new_purchase_order_path, class: "nav-link" do  %>
+               <%= feather_icon "book-open", class: "feather icon-home me-2" %> Pending PO
+             <%end%>
           </li>
-          <li class="nav-item border">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
-            </a>
+          <li class="nav-item">
+            <%= link_to new_purchase_order_path, class: "nav-link" do  %>
+               <%= feather_icon "x-square", class: "feather icon-home me-2" %>Rejected PO
+             <%end%>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_purchase_order_path, class: "nav-link" do  %>
+               <%= feather_icon "dollar-sign", class: "feather icon-home me-2" %>Payment Requisition
+             <%end%>
           </li>
         </ul>
       </div>

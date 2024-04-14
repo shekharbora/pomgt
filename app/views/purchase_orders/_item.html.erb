@@ -14,7 +14,8 @@
 </div>
 <div class="col-md-1">
   <%= poi.label :unit, style: "display: block", class: "form-label" %>
-  <%= poi.text_field :unit , class: "form-control"%>
+  <%#= poi.text_field :unit , class: "form-control"%>
+  <%= poi.select :unit,  ["BAG","BAL","BDL","BKL","BOX","BTL","CAN","CTN","CCM","CBM","CMS","DRM","DOZ","GGK","GRS","KME","KGS","KLR","MTS","MLT","MTR","NOS","PAC","PCS","PRS","QTL","ROL","SQY","SET","SQF","SQM","TBS","TUB","TGM","THD","TON","UNT","UGS","YDS"],{}, { class: "form-control" } %>
 </div>
 <div class="col-md-2">
   <%= poi.label :basic_price, style: "display: block", class: "form-label" %>
