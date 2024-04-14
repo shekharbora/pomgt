@@ -13,3 +13,4 @@ pin "@stimulus-components/rails-nested-form", to: "@stimulus-components--rails-n
 pin '@fortawesome/fontawesome-free', to: 'https://ga.jspm.io/npm:@fortawesome/fontawesome-free@6.1.1/js/all.js'
 pin "chartkick", to: "chartkick.js"
 pin "Chart.bundle", to: "Chart.bundle.js"
+pin "@stimulus-components/remote-rails", to: "@stimulus-components--remote-rails.js" # @5.0.0

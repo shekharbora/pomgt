@@ -1,0 +1,2 @@
+import{Controller as e}from"@hotwired/stimulus";class RemoteRails extends e{replace(e){e.preventDefault(),e.stopPropagation();const[,,t]=e.detail;this.element.outerHTML=t.response}append(e){e.preventDefault(),e.stopPropagation();const[,,t]=e.detail;this.element.insertAdjacentHTML("afterend",t.response)}prepend(e){e.preventDefault(),e.stopPropagation();const[,,t]=e.detail;this.element.insertAdjacentHTML("beforebegin",t.response)}}export{RemoteRails as default};
+

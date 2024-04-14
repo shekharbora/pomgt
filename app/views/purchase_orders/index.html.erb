@@ -14,63 +14,67 @@
 
 <div class="card mb-3">
   <div class="card-body">
-    <div id="purchase_orders table-responsive">
-      <table class="table table-bordered ">
-        <thead>
-          <th>
-            PO Number
-          </th>
-          <th>
-            Created By
-          </th>
-          <th>
-            Created At
-          </th>
-          <th>
-            Status
-          </th>
-          <th>
-            Group
-          </th>
-          <th>
-            Action
-          </th>
-        </thead>
-        <tbody>
-          <% @purchase_orders.each do |purchase_order| %>
-          <tr >
-            <td>
-              <%= purchase_order.po_number %>
-            </td>
-            <td>
-              <%= purchase_order.user&.email %>
-            </td>
-            <td>
-              <%= purchase_order.created_at.strftime("%F") %>
-            </td>
-            <td>
-              <%= purchase_order.status %>
-            </td>
-            <td>
-              <%= purchase_order.department&.code %>
-            </td>
-            <td>
-              <%= link_to purchase_order, class: "text-dark" do %> 
-                <%= feather_icon "eye", class: " feather me-1", aria: { label: "Your Devices" } %>
-              <%end%>
-              <%= link_to download_purchase_order_path(purchase_order,  format: :pdf), class: "text-dark"  do  %> 
-                <%= feather_icon "download", class: "feather me-1", aria: { label: "Your Devices" } %>
-              <%end%>
+    <% if @purchase_orders.present?%>
+      <div id="purchase_orders table-responsive">
+        <table class="table table-bordered ">
+          <thead>
+            <th>
+              PO Number
+            </th>
+            <th>
+              Created By
+            </th>
+            <th>
+              Created At
+            </th>
+            <th>
+              Status
+            </th>
+            <th>
+              Group
+            </th>
+            <th>
+              Action
+            </th>
+          </thead>
+          <tbody>
+            <% @purchase_orders.each do |purchase_order| %>
+            <tr >
+              <td>
+                <%= purchase_order.po_number %>
+              </td>
+              <td>
+                <%= purchase_order.user&.email %>
+              </td>
+              <td>
+                <%= purchase_order.created_at.strftime("%F") %>
+              </td>
+              <td>
+                <%= purchase_order.status %>
+              </td>
+              <td>
+                <%= purchase_order.department&.code %>
+              </td>
+              <td>
+                <%= link_to purchase_order, class: "text-dark" do %> 
+                  <%= feather_icon "eye", class: " feather me-1", aria: { label: "Your Devices" } %>
+                <%end%>
+                <%= link_to download_purchase_order_path(purchase_order,  format: :pdf), class: "text-dark"  do  %> 
+                  <%= feather_icon "download", class: "feather me-1", aria: { label: "Your Devices" } %>
+                <%end%>
 
-              <%= link_to purchase_order, data: { turbo_method: :delete }, class: "text-dark"   do%>
-                <%= feather_icon "trash-2", class: "feather me-1", aria: { label: "Your Devices" } %>
-              <%end%>
-            </td>
-          </tr>
-          <%end%>
-        </tbody>
-      </table>
-    </div>
+                <%= link_to purchase_order, data: { turbo_method: :delete }, class: "text-dark"   do%>
+                  <%= feather_icon "trash-2", class: "feather me-1", aria: { label: "Your Devices" } %>
+                <%end%>
+              </td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    <% else%>
+      <p class="text-center"> No Record Found !!</p>
+    <%end%>
   </div>
 </div>
 

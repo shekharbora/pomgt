@@ -13,22 +13,22 @@
              <%end%>
           </li>
           <li class="nav-item">
-             <%= link_to new_purchase_order_path, class: "nav-link" do  %>
+             <%= link_to purchase_orders_path(type: :approved_po), class: "nav-link" do  %>
                <%= feather_icon "check-square", class: "feather icon-home me-2" %> Approved PO
              <%end%>
           </li>
           <li class="nav-item">
-            <%= link_to new_purchase_order_path, class: "nav-link" do  %>
+            <%= link_to purchase_orders_path(type: :pending_po), class: "nav-link" do  %>
                <%= feather_icon "book-open", class: "feather icon-home me-2" %> Pending PO
              <%end%>
           </li>
           <li class="nav-item">
-            <%= link_to new_purchase_order_path, class: "nav-link" do  %>
+            <%= link_to purchase_orders_path(type: :canceled_po), class: "nav-link" do  %>
                <%= feather_icon "x-square", class: "feather icon-home me-2" %>Rejected PO
              <%end%>
           </li>
           <li class="nav-item">
-            <%= link_to new_purchase_order_path, class: "nav-link" do  %>
+            <%= link_to "#", class: "nav-link" do  %>
                <%= feather_icon "dollar-sign", class: "feather icon-home me-2" %>Payment Requisition
              <%end%>
           </li>

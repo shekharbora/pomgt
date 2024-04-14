@@ -3,7 +3,11 @@ class PurchaseOrdersController < ApplicationController
 
   # GET /purchase_orders or /purchase_orders.json
   def index
-    @purchase_orders = PurchaseOrder.all#current_user.purchase_orders
+    @purchase_orders = if params[:type].present?
+      PurchaseOrder.public_send(params[:type])
+    else
+      PurchaseOrder.all#current_user.purchase_orders
+    end
   end
 
   # GET /purchase_orders/1 or /purchase_orders/1.json
